@@ -1,155 +1,125 @@
 {
-  "project": {
-    "name": "long-hospital",
-    "quality": 1
-  },
-  "loader": {
-    "info": "/data/long-hospital/info.md",
-    "items": "/data/long-hospital/metadata.csv",
-    "timeline": "/data/long-hospital/timeline.csv",
-    "layouts": [
-      {
-        "title": "time"
-      },
-      {
-        "title": "similar",
-        "scale": 1,
-        "url": "/data/long-hospital/umap.csv"
-      }
-    ],
-    "textures": {
-      "medium": {
-        "size": 224,
-        "url": "/data/long-hospital/images/sprites/spritesheet.json"
-      },
-      "detail": {
-        "size": 1025,
-        "csv": "image",
-        "url": "/data/1024/"
-      },
-      "big": {
-        "size": 4096,
-        "csv": "largeImage",
-        "url": "/data/4096/"
-      }
+    "project": {
+        "name": "respectful-pot",
+        "quality": 1
+    },
+    "loader": {
+        "info": "/data/long-hospital/info.md",
+        "items": "/data/long-hospital/metadata.csv",
+        "layouts": [
+            {
+                "title": "similarity",
+                "scale": 0.3,
+                "url": "/data/long-hospital/tsne.csv"
+            }
+        ],
+        "textures": {
+            "medium": {
+                "size": 224,
+                "url": "/data/long-hospital/images/sprites/spritesheet.json"
+            },
+            "detail": {
+                "size": 1025,
+                "csv": "/data/1024/"
+            },
+            "big": {
+                "size": 4096,
+                "csv": "/data/4096/"
+            }
+        }
+    },
+    "style": {
+        "fontColor": "#DA3949",
+        "fontColorActive": "#DA3949",
+        "fontBackground": "#292525",
+        "textShadow": "1px 1px 0px #00000085",
+        "canvasBackground": "#fffefa",
+        "timelineBackground": "#f7efcd",
+        "timelineFontColor": "#ffff",
+        "backgroundHeader": "#035151",
+        "fontColorHeader": "#fffefa",
+        "detailBackground": "#292525",
+        "infoBackground": "#292525",
+        "infoFontColor": "#ffff",
+        "searchbarBackground": "#353535"
+    },
+    "projection": {
+        "columns": 3
+    },
+    "detail": {
+        "structure": {
+            "id": {
+                "name": "id",
+                "source": "id",
+                "display": "wide",
+                "type": "text"
+            },
+            "thumbnail": {
+                "name": "thumbnail",
+                "source": "thumbnail",
+                "display": "wide",
+                "type": "text"
+            },
+            "image": {
+                "name": "image",
+                "source": "image",
+                "display": "wide",
+                "type": "text"
+            },
+            "largeImage": {
+                "name": "largeImage",
+                "source": "largeImage",
+                "display": "wide",
+                "type": "text"
+            },
+            "_label": {
+                "name": "_label",
+                "source": "_label",
+                "display": "wide",
+                "type": "text"
+            },
+            "_iiif": {
+                "name": "_iiif",
+                "source": "_iiif",
+                "display": "wide",
+                "type": "text"
+            },
+            "_Predicted 1": {
+                "name": "_Predicted 1",
+                "source": "_Predicted 1",
+                "display": "wide",
+                "type": "text"
+            },
+            "_Confidence Predicted 1": {
+                "name": "_Confidence Predicted 1",
+                "source": "_Confidence Predicted 1",
+                "display": "wide",
+                "type": "text"
+            },
+            "_Predicted 2": {
+                "name": "_Predicted 2",
+                "source": "_Predicted 2",
+                "display": "wide",
+                "type": "text"
+            },
+            "_Confidence Predicted 2": {
+                "name": "_Confidence Predicted 2",
+                "source": "_Confidence Predicted 2",
+                "display": "wide",
+                "type": "text"
+            },
+            "_Confidence Predicted 3": {
+                "name": "_Confidence Predicted 3",
+                "source": "_Confidence Predicted 3",
+                "display": "wide",
+                "type": "text"
+            },
+            "keywords": {
+                "name": "keywords",
+                "source": "keywords",
+                "display": "wide",
+                "type": "text"
+            }
+        }
     }
-  },
-  "style": {
-    "fontColor": "#f7efcd",
-    "fontColorActive": "#1c1e1f",
-    "fontBackground": "#f7efcd",
-    "textShadow": "1px 1px 0px #00000085",
-    "canvasBackground": "#1c1e1f",
-    "timelineBackground": "#f7efcd",
-    "timelineFontColor": "#000",
-    "backgroundHeader": "#035151",
-    "fontColorHeader": "#fffefa",
-    "detailBackground": "#fffefa",
-    "infoBackground": "#353535",
-    "infoFontColor": "#f7efcd",
-    "searchbarBackground": "#353535"
-  },
-  "projection": {
-    "columns": 3
-  },
-  "detail": {
-    "structure": {
-      "id": {
-        "name": "id",
-        "source": "id",
-        "display": "wide",
-        "type": "text"
-      },
-      "year": {
-        "name": "year",
-        "source": "year",
-        "display": "wide",
-        "type": "text"
-      },
-      "thumbnail": {
-        "name": "thumbnail",
-        "source": "thumbnail",
-        "display": "wide",
-        "type": "text"
-      },
-      "image": {
-        "name": "image",
-        "source": "image",
-        "display": "wide",
-        "type": "text"
-      },
-      "largeImage": {
-        "name": "largeImage",
-        "source": "largeImage",
-        "display": "wide",
-        "type": "text"
-      },
-      "_label": {
-        "name": "_label",
-        "source": "_label",
-        "display": "wide",
-        "type": "text"
-      },
-      "_iiif": {
-        "name": "_iiif",
-        "source": "_iiif",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Description": {
-        "name": "_Description",
-        "source": "_Description",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Publication/creation": {
-        "name": "_Publication/creation",
-        "source": "_Publication/creation",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Physical description": {
-        "name": "_Physical description",
-        "source": "_Physical description",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Contributors": {
-        "name": "_Contributors",
-        "source": "_Contributors",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Type/technique": {
-        "name": "_Type/technique",
-        "source": "_Type/technique",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Subjects": {
-        "name": "_Subjects",
-        "source": "_Subjects",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Attribution and usage": {
-        "name": "_Attribution and usage",
-        "source": "_Attribution and usage",
-        "display": "wide",
-        "type": "text"
-      },
-      "keywords": {
-        "name": "keywords",
-        "source": "keywords",
-        "display": "wide",
-        "type": "text"
-      },
-      "_Notes": {
-        "name": "_Notes",
-        "source": "_Notes",
-        "display": "wide",
-        "type": "text"
-      }
-    }
-  }
 }

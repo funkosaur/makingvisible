@@ -1,174 +1,171 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MakingVisible</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <base target="_blank" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>VikusViewer</title>
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="pinterest" content="nohover" />
-  <base target="_blank" />
+    <link rel="stylesheet" href="css/introduction.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/infobar.css" />
-  <link rel="stylesheet" href="css/timeline.css" />
-
-  <script src="js/d3.v3.min.js"></script>
-  <script src="js/vue.min.js"></script>
-  <script src="js/marked.min.js"></script>
-  <script src="js/lodash.min.js"></script>
-  <script src="js/pixi.min.js"></script>
-  <script src="js/pixi-packer-parser.js"></script>
-  <script src="js/loader.js"></script>
-  <script src="js/canvas.js"></script>
-  <script src="js/timeline.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/tags.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/modernizr-custom.js"></script>
-  <!--[if lt IE 9]>
-      <script
-        src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
-        type="text/javascript"
-      ></script>
-    <![endif]-->
-
-  <!-- 
-
-                           ,--.                                     
-               ,---,   ,--/  /|               .--.--.               
-       ,---.,`--.' |,---,': / '         ,--, /  /    '.             
-      /__./||   :  ::   : '/ /        ,'_ /||  :  /`. /             
- ,---.;  ; |:   |  '|   '   ,    .--. |  | :;  |  |--`              
-/___/ \  | ||   :  |'   |  /   ,'_ /| :  . ||  :  ;_                
-\   ;  \ ' |'   '  ;|   ;  ;   |  ' | |  . . \  \    `.             
- \   \  \: ||   |  |:   '   \  |  | ' |  | |  `----.   \            
-  ;   \  ' .'   :  ;|   |    ' :  | | :  ' ;  __ \  \  |            
-   \   \   '|   |  ''   : |.  \|  ; ' |  | ' /  /`--'  /            
-    \   `  ;'   :  ||   | '_\.':  | : ;  ; |'--'.     /             
-     :   \ |;   |.' '   : |    '  :  `--'   \ `--'---'              
-      '---" '---'   ;   |,'    :  ,      .-./                       
-                    '---'       `--`----'                           
-               ,---,    ,---,.           .---.    ,---,.,-.----.    
-       ,---.,`--.' |  ,'  .' |          /. ./|  ,'  .' |\    /  \   
-      /__./||   :  :,---.'   |      .--'.  ' ;,---.'   |;   :    \  
- ,---.;  ; |:   |  '|   |   .'     /__./ \ : ||   |   .'|   | .\ :  
-/___/ \  | ||   :  |:   :  |-, .--'.  '   \' .:   :  |-,.   : |: |  
-\   ;  \ ' |'   '  ;:   |  ;/|/___/ \ |    ' ':   |  ;/||   |  \ :  
- \   \  \: ||   |  ||   :   .';   \  \;      :|   :   .'|   : .  /  
-  ;   \  ' .'   :  ;|   |  |-, \   ;  `      ||   |  |-,;   | |  \  
-   \   \   '|   |  ''   :  ;/|  .   \    .\  ;'   :  ;/||   | ;\  \ 
-    \   `  ;'   :  ||   |    \   \   \   ' \ ||   |    \:   ' | \.' 
-     :   \ |;   |.' |   :   .'    :   '  |--" |   :   .':   : :-'   
-      '---" '---'   |   | ,'       \   \ ;    |   | ,'  |   |.'     
-                    `----'          '---"     `----'    `---'       
-                                                                    
-
-
-christopher pietsch
-cpietsch@gmail.com
-2015-2018
-
- -->
-</head>
-
-<body>
-  <div id="hiddenreload"></div>
-
-  <div class="browserInfo">
-    <p>
-      This visualization is not optimized for mobile phones and needs WebGL
-      enabled.
-    </p>
-    <p>Please come back on a Computer.</p>
-    <span>💡</span>
-  </div>
-
-  <div class="search"></div>
-
-  <div class="page">
-    <div class="detailLoader"></div>
-    <div class="sideLoader"></div>
-
-    <div class="sidebar detail hide">
-      <div class="slidebutton"></div>
-
-      <div class="outer">
-        <div id="detail" class="inner">
-          <div class="entries" v-if="item">
-            <div v-if="item._imagenum > 1" class="entry wide pages">
-              <div class="label">Seite</div>
-              <div class="content">
-                <span v-for="i in parseInt(item._imagenum)" v-bind:key="i" v-on:click="displayPage(i-1)"
-                  v-bind:class="{ active: i === page+1, keyword: true }">
-                  {{ i }}
-                </span>
-              </div>
-            </div>
-            <div v-for="entry in structure" v-bind:key="entry.name" v-bind:class="entry.display" class="entry"
-              v-if="hasData(entry)">
-              <div v-if="entry.name" class="label">{{ entry.name }}</div>
-              <div class="content">
-                <span v-if="entry.type === 'keywords'">
-                  <span v-for="keyword in item[entry.source]" v-bind:key="keyword" class="keyword">
-                    {{ keyword }}
-                  </span>
-                </span>
-                <span v-else-if="entry.type === 'link'">
-                  <a :href="item[entry.source]" target="_blank">Link</a>
-                </span>
-                <span v-else-if="entry.type === 'markdown'">
-                  <span v-html="getContent(entry)"></span>
-                </span>
-                <span v-else-if="entry.type === 'function'">
-                  <span v-html="getContent(entry)"></span>
-                </span>
-                <span v-else>
-                  {{ getContent(entry) }}
-                </span>
-              </div>
-            </div>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/marked.min.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/pixi.min.js"></script>
+    <script src="js/pixi-packer-parser.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/tags.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/modernizr-custom.js"></script>
+    <script src="js/carousel.js"></script>
+  </head>
+  <body>
+    <main>
+      <nav class="navBar">
+        <div class="navContainer">
+          <div class="logoName">MAKING VISIBLE THE STOREROOM</div>
+        </div>
+      </nav>
+      <div class="introduction">
+        <div class="intro-container">
+          <div class="intro">
+            <h2>
+              Welcome to Making Visible the Storeroom: Unveiling Treasures
+              Hidden in Museums' Storehouses
+            </h2>
+            <h3>"Unlocking the Past, Inspiring the Future"</h3>
+            Welcome to the digital gateway of "Making Visible the Storeroom," an
+            innovative project dedicated to bringing the hidden treasures of
+            museums' storehouses into the spotlight. Our mission is to pioneer
+            web-based access to a visual repository of remarkable artifacts and
+            artworks, allowing you to explore the rich tapestry of human history
+            and creativity.
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="navi">
-    </div>
-
-    <div class="infobar sneak">
-      <div class="infobutton">
-        <svg width="16px" height="24px" viewBox="0 0 16 24">
-          <path d="M13.6824546,2 L3.7109392,11.9715154 L13.7394238,22" stroke="#FFF" stroke-width="5"></path>
-        </svg>
-      </div>
-
-      <div class="outer">
-        <div class="inner">
-          <div id="infobar" class="infosidebar">
-            <span v-html="marked(info)"></span>
-            <div class="credit">
-              Powered by
-              <a href="https://vikusviewer.fh-potsdam.de/" target="_blank">VIKUS Viewer</a>
-            </div>
+      <div class="carousel-container">
+        <div class="testcar">
+          <div class="carousel" data-gap="80">
+            <figure>
+              <img
+                src="/data/4096/0439f49b9f18413a6c25db5ba6670427.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/224bff183ee482001cb31d7f56c5680b.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/69a11c262d135450038ac3a0c33d58b7.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/84ad6c9f6e16221292f81cff256727ef.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/8bbe23b4a5ae298c01cb76940ee2315e.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/a34f1f92f887fd9331496e95eccbddc0.jpg"
+                alt=""
+              />
+              <img
+                src="/data/4096/ec8e0d69531025a608bc6a2d0c4a53fb.jpg"
+                alt=""
+              />
+            </figure>
+            <nav>
+              <button
+                class="nav prev"
+                onclick="window.location.href = 'viewer.html';"
+              >
+                Visit our visual repository
+              </button>
+            </nav>
           </div>
         </div>
       </div>
-    </div>
-    <div class="searchbar">
-      <input type="input" name="suche" />
-      <div class="button">
-        <div class="openbutton"></div>
+      <div class="about-container">
+        <div class="about">
+          <h2>About Our Project</h2>
+          In a world where countless treasures lay hidden away in museum
+          storehouses, our project seeks to break down barriers and open the
+          doors to these remarkable collections. "Making Visible the Storeroom"
+          is not only a celebration of the past but also an inspiration for the
+          future. We believe that by revealing the secrets of these storehouses,
+          we can inspire creativity, foster inclusivity, and forge meaningful
+          connections between communities and their cultural heritage.
+        </div>
       </div>
-    </div>
-  </div>
-
-  <script src="js/sidebars.js"></script>
-  <script src="js/viz.js"></script>
-</body>
-
+      <div class="features-container">
+        <div class="features">
+          <div class="feature1">
+            <div class="ftr">
+              <h2>Experience the power of IIIF</h2>
+              <img
+                src="/img/International_Image_Interoperability_Framework_logo.png"
+              />
+            </div>
+            Our project harnesses the International Image Interoperability
+            Framework (IIIF) to provide you with an immersive and high-quality
+            exploration of museum storehouse collections. With IIIF, you can
+            zoom in on intricate details, compare images side by side, and even
+            contribute your own insights through interactive annotations. This
+            technology ensures universal access and collaborative engagement,
+            revolutionizing the way we connect with cultural heritage. Explore
+            our collection and witness the transformative potential of IIIF in
+            action.
+          </div>
+          <div class="feature2">
+            <h2>Unveiling the Unseen with Image Recognition</h2>
+            We harness the power of image recognition algorithms to uncover the
+            hidden treasures within each storeroom image. Our technology scans
+            and analyzes the visual content, providing us with insightful
+            probabilities about what lies within. This innovative approach
+            allows us to reveal, with a high degree of accuracy, the fascinating
+            details and subjects present in each image.
+          </div>
+          <div class="feature3">
+            <h2>Categorically Exploring Images with Metadata</h2>
+            We've simplified the art of exploration with the help of metadata.
+            Our project seamlessly categorizes and visualizes images based on
+            the rich metadata accompanying each piece. With this detailed
+            information, you can effortlessly navigate through collections based
+            on specific categories, themes, or criteria. Whether you're
+            interested in exploring images by genre, time period, artistic
+            style, or any other categorical dimension, our user-friendly tools
+            use metadata to make it a breeze.
+          </div>
+          <div class="feature4">
+            <h2>Responsible Image Usage and Crediting</h2>
+            We've diligently obtained the necessary permissions and licenses to
+            use the images in our collection. Our commitment to ethical image
+            usage means that artists and institutions are rightfully credited
+            for their creative contributions. Each image you explore on our
+            platform comes with clear and transparent attribution, ensuring that
+            the hard work and talent behind these artworks are acknowledged and
+            respected.
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </main>
+  </body>
 </html>

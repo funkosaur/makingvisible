@@ -1,19 +1,16 @@
 {
-    "id": "long-hospital",
-    "label": "long-hospital",
-    "iiif_url": "https://iiif.wellcomecollection.org/presentation/collections/genres/Stickers",
-    "path": "../data/long-hospital",
-    "spritesheetPath": "/data/long-hospital/images/sprites",
-    "created": 1689791179,
-    "updated": 1689791323,
+    "id": "respectful-pot",
+    "label": "respectful-pot",
+    "iiif_url": "https://culturedigitalskills.org/presentation/2023-08-29T20-37-03.json",
+    "path": "../data/respectful-pot",
+    "spritesheetPath": "/data/respectful-pot/images/sprites",
+    "created": 1693337976,
+    "updated": 1694177329,
     "collection": true,
     "images": true,
-    "numImages": 178,
-    "spritesheets": true,
-    "features": true,
-    "similarity": true,
+    "numImages": 7,
     "metadata": true,
-    "metadataFile": "../data/long-hospital/metadata.csv",
+    "metadataFile": "../data/respectful-pot/metadata.csv",
     "metadataStructure": {
         "id": {
             "name": "id",
@@ -51,45 +48,33 @@
             "display": "wide",
             "type": "text"
         },
-        "_Description": {
-            "name": "_Description",
-            "source": "_Description",
+        "_Predicted 1": {
+            "name": "_Predicted 1",
+            "source": "_Predicted 1",
             "display": "wide",
             "type": "text"
         },
-        "_Publication/creation": {
-            "name": "_Publication/creation",
-            "source": "_Publication/creation",
+        "_Confidence Predicted 1": {
+            "name": "_Confidence Predicted 1",
+            "source": "_Confidence Predicted 1",
             "display": "wide",
             "type": "text"
         },
-        "_Physical description": {
-            "name": "_Physical description",
-            "source": "_Physical description",
+        "_Predicted 2": {
+            "name": "_Predicted 2",
+            "source": "_Predicted 2",
             "display": "wide",
             "type": "text"
         },
-        "_Contributors": {
-            "name": "_Contributors",
-            "source": "_Contributors",
+        "_Confidence Predicted 2": {
+            "name": "_Confidence Predicted 2",
+            "source": "_Confidence Predicted 2",
             "display": "wide",
             "type": "text"
         },
-        "_Type/technique": {
-            "name": "_Type/technique",
-            "source": "_Type/technique",
-            "display": "wide",
-            "type": "text"
-        },
-        "_Subjects": {
-            "name": "_Subjects",
-            "source": "_Subjects",
-            "display": "wide",
-            "type": "text"
-        },
-        "_Attribution and usage": {
-            "name": "_Attribution and usage",
-            "source": "_Attribution and usage",
+        "_Confidence Predicted 3": {
+            "name": "_Confidence Predicted 3",
+            "source": "_Confidence Predicted 3",
             "display": "wide",
             "type": "text"
         },
@@ -98,14 +83,10 @@
             "source": "keywords",
             "display": "wide",
             "type": "text"
-        },
-        "_Notes": {
-            "name": "_Notes",
-            "source": "_Notes",
-            "display": "wide",
-            "type": "text"
         }
     },
     "zip": true,
-    "zipFile": "../data/long-hospital/project.zip"
+    "zipFile": "../data/respectful-pot/project.zip",
+    "spritesheets": true,
+    "features": true
 }

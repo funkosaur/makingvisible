@@ -47,6 +47,23 @@ body {
   -o-user-select:none;*/
 }
 
+.logoName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+  font-size: 16px;
+  height: 2rem;
+  border: solid 4px #DA3949;
+  font-weight: bold;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 canvas {
@@ -694,7 +711,7 @@ svg {
     right: 0px;
     position: absolute;
     width: 520px;
-    color: #2D2D2D;
+    color: #ffff;
     background: rgb(255, 254, 250);
     /* background: url("img/koenigspapier.png"); */
     /* font-size: 13px; */
@@ -705,6 +722,7 @@ svg {
  height: 100%;
  overflow-y: auto;
  overflow-x: hidden;
+ color: #ffff;
 }
 
 .detail .inner {
@@ -752,7 +770,7 @@ svg {
 
 .detail .entry .label {
   text-transform: uppercase;
-  color: rgba(0,0,0,0.24);
+  color: #ffff;
   font-weight: 900;
   flex: 1;
   padding-bottom: 3px;
@@ -799,7 +817,7 @@ svg {
 }
 
 .detail a {
-  color: #2D2D2D;
+  color: #ffff;
   font-style: normal;
 }
 

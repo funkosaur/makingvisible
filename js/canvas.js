@@ -698,7 +698,8 @@ function Canvas() {
     sleep = false;
     var scaleFactor = state.mode == "time" ? 0.9 : tsneScale[state.mode] || 0.5;
     data.forEach(function (d) {
-      // console.log(d);s
+       console.log(d);
+       console.log(scaleFactor)
       d.scaleFactor = scaleFactor;
       d.sprite.scale.x = d.scaleFactor;
       d.sprite.scale.y = d.scaleFactor;
